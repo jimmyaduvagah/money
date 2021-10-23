@@ -26,9 +26,9 @@ SECRET_KEY = os.getenv(
     'bDgT-uc2ue2c3vg6RgCsyGO26oAbwK9HR1z6MSuzh_IdrAKXgi1ksuEb2V1-qiK94WwXJY5DSoBN7yS0cRC9jw')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 AUTH_USER_MODEL = 'users.User'
 
 CORS_ALLOWED_ORIGINS = [
