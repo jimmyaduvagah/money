@@ -1,0 +1,16 @@
+<main class="form-signin">
+    <form>
+      <h4 class="mb-3 fw-normal">Please sign in</h4>
+      <label for="inputPhoneNumber" class="visually-hidden">Phone Number</label>
+      <input type="text" id="inputPhoneNumber" name="Phone" [(ngModel)]="email"  class="form-control"  placeholder="Email" required autofocus>
+      <label for="inputPassword" class="visually-hidden">Password</label>
+      <input type="password" id="inputPassword" name="password" [(ngModel)]="password" class="form-control" placeholder="Password" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" (click)="signIn()" type="submit">Sign in</button>
+    </form>
+</main>
+

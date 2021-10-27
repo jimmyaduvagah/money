@@ -1,0 +1,33 @@
+<div class="container">
+    <hr>    
+    <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+        <h4 class="card-title mt-3 text-center">Create Account</h4>
+        <p class="text-center">Get started with your free account</p>
+       
+        <p class="divider-text">
+        </p>
+        <form class="form-signin" >
+        <div class="form-group input-group">
+            <input name="" class="form-control" placeholder="First name" name="fname" type="text" [(ngModel)]="firstName" >
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+            <input name="" class="form-control" placeholder="Last name" name="lname" type="text" [(ngModel)]="lastName">
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+            <input name="" class="form-control" placeholder="Email address" name="email" type="email" [(ngModel)]="email">
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+            <input class="form-control" placeholder="Create password" name="password2" type="password" [(ngModel)]="passWord">
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+            <input class="form-control" placeholder="Repeat password"name="cpassword" type="password" [(ngModel)]="confirmPassword">
+        </div> <!-- form-group// -->                                      
+        <div class="form-group">
+            <button type="submit"  class="btn btn-primary btn-block" (click)="registerNewUser()" type="submit"> Create Account  </button>
+        </div> <!-- form-group// -->      
+        <p class="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
+    </form>
+    </article>
+    </div> <!-- card.// -->
+</div>
