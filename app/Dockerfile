@@ -14,6 +14,8 @@ RUN pip install --upgrade pip
 
 COPY ./requirements.txt .
 
+RUN apk update && apk add bash
+
 RUN \
  apk add --no-cache postgresql-libs && \
  apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \

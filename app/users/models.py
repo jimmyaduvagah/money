@@ -5,12 +5,15 @@ import jwt
 
 from datetime import datetime, timedelta
 
-from django.core.validators import validate_email
 from django.conf import settings
 from django.contrib.auth.models import (
     AbstractBaseUser, PermissionsMixin)
+from django.core.validators import validate_email
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils import timezone
+from rest_framework.authtoken.models import Token
 
 from .user_manager import UserManager
 
@@ -19,6 +22,11 @@ GENDER_CHOICES = (
     ('MA', 'Male'),
     ('FM', 'Female')
 )
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
 
 
 class User(AbstractBaseUser, PermissionsMixin):

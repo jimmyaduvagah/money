@@ -20,3 +20,4 @@ ipython
 model-mommy
 tox
 autopep8
+coinoxr==0.0.1a0

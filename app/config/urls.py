@@ -14,17 +14,33 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+from rest_framework.authtoken import views as auth_views
+from rest_framework_simplejwt import views as jwt_views
 
 from upload.views import image_upload
+from users.views import UserViewSet, UserRegisterViewSet, LoginViewSet, ObtainTokenPairWithUser
 
+
+
+router = routers.SimpleRouter()
+
+router.register(r'users', UserViewSet)
 
 urlpatterns = [
+    path('api/v1/', include(router.urls)),
+    path('api/v1/token/obtain/', ObtainTokenPairWithUser.as_view(), name='token_create'),
+    path('api/v1/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('api-token-auth/', auth_views.obtain_auth_token),
     path("", image_upload, name="upload"),
     path('admin/', admin.site.urls),
 ]
 
 if bool(settings.DEBUG):
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
+    
+# curl -d '{"password":"asante34", "email":"jimmy.@gmail.com"}'     -H 'Content-Type:application/json' -X POST http://127.0.0.1:8000/api/v1/token/obtain/
