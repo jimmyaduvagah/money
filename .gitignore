@@ -68,8 +68,6 @@ docs/_build/
 env.sh
 
 
-
-
 # Node modules, from front-end submodule
 node_modules/
 EGG-INFO/*
