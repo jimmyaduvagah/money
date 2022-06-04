@@ -5,8 +5,8 @@ export class SettingsService {
 
     private devMode = true;
     private protocol = 'http';
-    private domain = '127.0.0.1';
-    private baseUrl = ':8000/';
+    private domain = 'backend';
+    private baseUrl = ':8100/';
     private apiVersion = '1';
 
 
